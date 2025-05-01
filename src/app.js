@@ -9,10 +9,11 @@ import { PrismaClient } from '@prisma/client';
 const app = express();
 const prisma = new PrismaClient();
 
-console.log("Open to requests from",process.env.CORS_ORIGIN)
+console.log("Open to requests from", process.env.CORS_ORIGIN)
 
 app.use(cors({
   origin: process.env.CORS_ORIGIN,
+  credentials: true,
 }));
 
 app.use(express.json());
