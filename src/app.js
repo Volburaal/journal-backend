@@ -18,10 +18,6 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  return res.status(200);
-});
-
 app.use("/api/pin", authRoutes);
 app.use("/api/entry", entryRoutes);
 
