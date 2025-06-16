@@ -8,7 +8,25 @@ generator client {
 }
 
 model Entry {
-  id        Int         @id @default(autoincrement())
-  date      DateTime    @default(now())
-  content   String
+  id              Int         @id @default(autoincrement())
+  date            DateTime    @default(now())
+  title           String?
+  content         String
+  categoryId      Int?
+  category        Category?   @relation(fields: [categoryId], references:[id])
+}
+
+model Category {
+  id             Int         @id @default(autoincrement())
+  name           String
+  icon           String
+  titleStyle     Title
+  recordDateTime Boolean     @default(true)
+  entries        Entry[]
+}
+
+enum Title{
+  AUTO_NUMBER
+  CUSTOM_TITLE
+  CUSTOM_AND_AUTO
 }

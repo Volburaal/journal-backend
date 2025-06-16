@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import entryRoutes from "./routes/entryRoutes.js"
+import categoryRoutes from "./routes/categoryRoutes.js"
 import { PrismaClient } from '@prisma/client';
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use("/api/pin", authRoutes);
 app.use("/api/entry", entryRoutes);
+app.use("/api/category", categoryRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
